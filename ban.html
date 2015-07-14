@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+<title>League of Legends: Batch Summoner Info</title>
+<style>
+#header {
+    background-color: #2F4F4F;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-family: Helvetica;
+}
+#nav {
+    line-height: 30px;
+    background-color: #C1CDCD;
+    height: 300px;
+    width: 100px;
+    float: left;
+    padding: 5px;
+    font-family: Helvetica;      
+}
+#section {
+    float: center;
+    text-align: center;
+    padding: 5px;
+    font-family: Helvetica;
+    border: 1px solid black;
+    background-color: #C1CDCD;
+    min-height: 100%;
+}
+#footer {
+    background-color: #2F4F4F;
+    color: white;
+    clear: both;
+    text-align: center;
+    padding: 5px;
+    font-family: Helvetica;
+}
+.input {
+	width: 250;
+	height: 200;
+	font-family: Helvetica;
+	color: black;
+	padding: 10px;
+}
+</style>
+</head>
+<body style="background-color: #C1CDCD; height: 85%">
+
+<div id="header">
+<h1>League of Legends: Batch Summoner Info</h1>
+</div>
+
+<div id="section">
+	<div class="input">
+	<p><b>Enter up to 6 summoners to look at their ranked stats side-by-side.</b></p><br>
+		<form action="/output" method="post">
+			Summoner 1 name: <input type="text" name="summoner0"><br>
+			Summoner 2 name: <input type="text" name="summoner1"><br>
+			Summoner 3 name: <input type="text" name="summoner2"><br>
+			Summoner 4 name: <input type="text" name="summoner3"><br>
+			Summoner 5 name: <input type="text" name="summoner4"><br>
+			Summoner 6 name: <input type="text" name="summoner5"><br>
+			<br>
+			<input type="submit" value="Show me the stats!">
+		</form>
+	</div>
+</div>
+
+<div id="footer">
+Made by Austin Le a.k.a. Arkaotics
+</div>
+
+</body>
+</html>

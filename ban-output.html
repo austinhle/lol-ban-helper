@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>League of Legends: Batch Summoner Info</title>
+<style>
+#header {
+    background-color: #2F4F4F;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-family: Helvetica;
+}
+#nav {
+    line-height: 30px;
+    background-color: #C1CDCD;
+    height: 300px;
+    width: 100px;
+    float: left;
+    padding: 5px;
+    font-family: Helvetica;      
+}
+#section {
+    width: 250px;
+    float: left;
+    padding: 5px;
+    font-family: Helvetica;
+    border: 1px solid black;
+    background-color: #C1CDCD;
+}
+#footer {
+    background-color: #2F4F4F;
+    color: white;
+    clear: both;
+    text-align: center;
+    padding: 5px;
+    font-family: Helvetica;	 
+}
+.champion {
+	font-family: Helvetica;
+	color: black;
+	width: 250px;
+	padding: 5px;
+}
+.info {
+	font-family: Helvetica;
+	float: right;
+	padding: 5px;
+	border: 1px solid black;
+	background-color: #E6F5F5;
+}
+</style>
+</head>
+<body style="background-color: #C1CDCD">
+
+<div id="header">
+<h1>League of Legends: Batch Summoner Info</h1>
+<h3>Showing top 10 most played champions in Season 5 Ranked</h3>
+</div>
+
+{{range $summoner := .}}
+	{{if $summoner.Valid}}
+	<div id="section">
+		<div style="text-align: center; color: green">
+			<h2><a href="http://na.op.gg/summoner/userName={{$summoner.Name}}" target="_blank">{{$summoner.Name}}</a></h2>
+			<h3>{{$summoner.Rank}}</h3>
+		</div>
+        {{range $champ := $summoner.Champions}}
+            <div class="champion">
+        		{{if $champ.Name}}
+                	<img src="http://ddragon.leagueoflegends.com/cdn/5.10.1/img/champion/{{$champ.FormattedName}}.png" style="width:30px; height:30px;"> <b>{{$champ.Name}}</b> <div style="float: right; margin-top: 14px; padding: 5px"><font color="purple">{{$champ.Stats.WinRate}}</font></div>
+                {{else}}
+	            	 <b>Total stats</b> <div style="float: right; padding: 5px"><font color="purple">{{$champ.Stats.WinRate}}</font></div>
+	            {{end}}
+	           <br>
+                Number of games: <font color="#EE7600">{{$champ.Stats.TotalSessionsPlayed}}</font><br>
+                K/D/A: <font color="green">{{$champ.Stats.AverageKills}}</font> / <font color="red">{{$champ.Stats.AverageDeaths}}</font> / <font color="blue">{{$champ.Stats.AverageAssists}}</font> = <font color="#0099CC">{{$champ.Stats.KDA}}:1</font>
+            </div>
+        {{end}}
+	</div>
+	{{else}}
+	<div id="section">
+	   	<div style="text-align: center"><h2>No ranked games found for summoner <font color="green">{{$summoner.Name}}</font></h2></div>
+	</div>
+	{{end}}
+{{end}}
+
+<br>
+
+<div class="info" style="text-align: center">
+<h2><font color="green">Ban Advice</font></h2>
+<h4>...coming soon...</h4>
+</div>
+
+<div id="footer">
+Made by Austin Le a.k.a. Arkaotics
+</div>
+
+</body>
+</html>
